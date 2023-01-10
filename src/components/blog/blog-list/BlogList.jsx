@@ -7,7 +7,7 @@ const BlogList = (props) => {
 
   useEffect(() => {
     const fetchBlogs = async () => {
-      let response = await fetch("http://localhost:3001/blogs");
+      let response = await fetch("https://be-d2-production.up.railway.app/blogs");
       try {
         if (response.ok) {
           let data = await response.json();
