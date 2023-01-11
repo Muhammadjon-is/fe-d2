@@ -12,7 +12,7 @@ const Blog = (props) => {
   const id = params.id;
   useEffect(() => {
     const fetchBlogs = async () => {
-      let response = await fetch("https://be-d2-production.up.railway.app/boooks");
+      let response = await fetch(`https://be-d2-production.up.railway.app/blogs/${id}`);
       try {
         if (response.ok) {
           let data = await response.json();
