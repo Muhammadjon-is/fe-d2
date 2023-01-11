@@ -6,7 +6,6 @@ import BlogLike from "../../components/likes/BlogLike";
 import "./styles.css";
 const Blog = (props) => {
   const [book, setBook] = useState({});
-  const [boooks, serBoooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const params = useParams();
   const id = params.id;
@@ -17,20 +16,21 @@ const Blog = (props) => {
         if (response.ok) {
           let data = await response.json();
           console.log(data);
-          serBoooks(data);
+         setBook(data)
+         setLoading(false)
         }
       } catch (error) {
         console.error(error);
       }
     };
     fetchBlogs();
-  }, []);
+  }, [id]);
 
-  useEffect(() => {
-    setBook(boooks.find((book) => book._id === id));
-    console.log(book);
-    setLoading(false);
-  }, [boooks]);
+  // useEffect(() => {
+  //   setBook(boooks.find((book) => book._id === id));
+  //   console.log(book);
+  //   setLoading(false);
+  // }, [boooks]);
 
   if (loading) {
     return <div>loading</div>;
